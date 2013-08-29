@@ -72,9 +72,6 @@ autocmd FileType ruby       setlocal tabstop=2 softtabstop=2 shiftwidth=2
 autocmd FileType html       setlocal tabstop=2 softtabstop=2 shiftwidth=2
 autocmd FileType xml        setlocal tabstop=2 softtabstop=2 shiftwidth=2
 
-" run go fmt after saving
-autocmd BufWritePost *.go   :silent Fmt
-
 " ================================ colors ======================================
 syntax enable
 
@@ -94,7 +91,7 @@ if os == "Darwin"
         colorscheme wombat
     endif
 elseif os == "Linux"
-    set background=dark
+    " set background=dark
     if has('gui_running')
         colorscheme solarized
     else
