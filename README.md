@@ -7,6 +7,7 @@ Concept
 =======
 
 Concept is based on https://github.com/holman/dotfiles/
+
 Use vundle for vim plugin management
 
 Usage
