@@ -3,7 +3,7 @@
 "        URL: http://github.com/ruoyul/dotfiles                                "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" ================================ pathogen ====================================
+" ================================= Vundle =====================================
 set nocompatible               " be iMproved
 
 " clone vundle if not there, vundle #1
@@ -96,7 +96,7 @@ if os == "Darwin"
 elseif os == "Linux"
     set background=dark
     if has('gui_running')
-        colorscheme wombat
+        colorscheme solarized
     else
         colorscheme wombat
     endif
