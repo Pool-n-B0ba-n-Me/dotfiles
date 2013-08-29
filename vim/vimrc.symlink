@@ -51,7 +51,7 @@ if iCanHazVundle == 0
     :BundleInstall
 endif
 
-filetype plugin indent on
+filetype plugin indent on   " required!
 
 " ================================ general =====================================
 set history=1000            " save more history
@@ -221,8 +221,9 @@ let NERDTreeShowHidden=1
 
 " =================================== TODOs ====================================
 " TODO 
-" * fix issue with quit window with nerdtree and taglist
-" * ruby match do .. endif
+" * better completion
+" * close vim when file window is exited, i.e. close taglist etc if opened
+" * ruby match do .. endif, html tag match, maybe use matchit?
 " * fold function/classes
 
 " " IDEA: fix later
