@@ -1,0 +1,43 @@
+[alias]
+    ad = add
+    st = status
+    ci = commit
+    br = branch
+    co = checkout
+    df = diff
+    tree = log --graph --pretty=oneline
+    his = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+    hisa = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short --all
+    unstage = reset HEAD --
+    last = log -1 HEAD
+    type = cat-file -t
+    dump = cat-file -p
+
+[color]
+    ui = auto
+
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+
+[user]
+	email = lllrrrryyy@gmail.com
+	name = Ruoyu Li
+
+[core]
+    editor = vim
+
+[merge]
+    tool = vimdiff

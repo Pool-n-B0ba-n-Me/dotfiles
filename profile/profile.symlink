@@ -1,0 +1,17 @@
+# load bashrc file depend on type of OS
+ostype=`uname`
+
+# NOTE: the command readlink work differently under linux and osx
+filepath=`readlink $HOME/.profile`
+dirname=`dirname $filepath`
+
+# handles case if user git clone repo to something that's not ~/.dotfiles 
+if [ $ostype = "Linux" ]; then
+    sourceme=$dirname/profile_linux
+    echo "sourcing $sourceme"
+    source $sourceme
+elif [ $ostype = "Darwin" ]; then
+    sourceme=$dirname/profile_osx
+    echo "sourcing $sourceme"
+    source $sourceme
+fi

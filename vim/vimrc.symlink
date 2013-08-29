@@ -1,0 +1,239 @@
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"   Filename: .vimrc                                                           "
+"        URL: http://github.com/ruoyul/dotfiles                                "
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" ================================ pathogen ====================================
+set nocompatible               " be iMproved
+
+" clone vundle if not there, vundle #1
+let iCanHazVundle=1
+let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
+if !filereadable(vundle_readme)
+    echo "Installing Vundle.."
+    echo ""
+    silent !mkdir -p ~/.vim/bundle
+    silent !git clone https://github.com/gmarik/vundle ~/.vim/bundle/vundle
+    let iCanHazVundle=0
+endif
+
+filetype off                   " required!
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" let Vundle manage Vundle
+" required! 
+Bundle 'gmarik/vundle'
+
+" My Bundles here:
+"
+" original repos on github
+Bundle 'scrooloose/nerdtree'
+Bundle 'tomtom/tcomment_vim'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-surround'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'kien/ctrlp.vim'
+Bundle 'tpope/vim-pathogen'
+Bundle 'Raimondi/delimitMate'
+Bundle 'godlygeek/csapprox'
+" vim-scripts repos
+Bundle 'AutoComplPop'
+" non github repos
+" ...
+" git repos on your local machine (ie. when working on your own plugin)
+" ...
+
+" install all bundle if vundle was just cloned, see vundle #1
+if iCanHazVundle == 0
+    echo "Installing Bundles, please ignore key map error messages"
+    echo ""
+    :BundleInstall
+endif
+
+filetype plugin indent on
+
+" ================================ general =====================================
+set history=1000            " save more history
+" double click to highlight a word
+nnoremap <silent> <2-LeftMouse> :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>
+
+" =============================== no backup ====================================
+set nobackup                " no back up files
+set nowritebackup
+set noswapfile
+
+" ============================== completion ====================================
+set oft=syntaxcomplete#Complete
+
+" ========================== FileType specific =================================
+autocmd FileType python     setlocal tabstop=4 softtabstop=4 shiftwidth=4
+autocmd FileType ruby       setlocal tabstop=2 softtabstop=2 shiftwidth=2
+autocmd FileType html       setlocal tabstop=2 softtabstop=2 shiftwidth=2
+autocmd FileType xml        setlocal tabstop=2 softtabstop=2 shiftwidth=2
+
+" run go fmt after saving
+autocmd BufWritePost *.go   :silent Fmt
+
+" ================================ colors ======================================
+syntax enable
+
+" IMPORTANT: Uncomment one of the following lines to force
+" using 256 colors (or 88 colors) if your terminal supports it,
+" but does not automatically use 256 colors by default.
+set t_Co=256
+" set t_Co=88
+
+" os specific colorschemes
+let os = substitute(system('uname'), "\n", "", "")
+if os == "Darwin"
+    set background=dark
+    if has('gui_running')
+        colorscheme solarized
+    else
+        colorscheme wombat
+    endif
+elseif os == "Linux"
+    set background=dark
+    if has('gui_running')
+        colorscheme wombat
+    else
+        colorscheme wombat
+    endif
+elseif os == "CYGWIN_NT-6.1-WOW64"
+    set background=dark
+    colorscheme zenburn
+endif
+
+" change highlight seach color
+highlight Search guibg=LightGreen
+
+" ============================== 80 char rule ==================================
+if version >= 703
+    set colorcolumn=81
+else
+    highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+    match OverLength /\%81v.\+/  
+endif
+
+" ============================== basic UIs =====================================
+set number                  " show line number
+" set cul                   " highlight current line
+set mouse=a                 " allow mouse in all four modes
+set laststatus=2            " last window always has a statusline
+set ruler                   " always show info along bottom
+set hlsearch                " highlight search
+set incsearch               " search as you type
+set ignorecase              " search ignore case
+set showmatch               " match opposite paren 
+set statusline=%<%f\%h%m%r%=%-20.(line=%l\ \ col=%c%V\ \ totlin=%L%)\ \ \%h%m%r%=%-40(bytval=0x%B,%n%Y%)\%P
+set cursorline
+" hi CursorLine term=bold cterm=bold guibg=Grey40
+
+" ============================== buffers =======================================
+set hidden                  " hide a buffer when it's closed
+set splitright              " make vsplit put the new buffer to the right
+set splitbelow              " make split put the new buffer to the bottom
+
+" ============================== indent ========================================
+set autoindent              " auto-indent
+set smartindent             " be smart about it
+set tabstop=4               " tab spacing
+set softtabstop=4           " unify
+set shiftwidth=4            " indent/outdent by 4 columns
+set expandtab               " use spaces instead of tabs
+set shiftround              "  
+set smarttab                " 
+set wrap                  " don't wrap text
+" set textwidth=80            " wrap at 80 chars by default
+
+" =========================== key mappings =====================================
+" j and k navigate screen lines not file lines
+nnoremap j gj
+nnoremap k gk
+
+" " disable arrow keys
+" nnoremap <up> <nop>
+" nnoremap <down> <nop>
+" nnoremap <left> <nop>
+" nnoremap <right> <nop>
+" inoremap <up> <nop>
+" inoremap <down> <nop>
+" inoremap <left> <nop>
+" inoremap <right> <nop>
+
+" switch between split screens
+nnoremap <C-J> <C-W><C-J>
+nnoremap <C-K> <C-W><C-K>
+nnoremap <C-L> <C-W><C-L>
+nnoremap <C-H> <C-W><C-H>
+
+" " press an open paren automatically add a closing one
+" inoremap [ []<esc>i
+" inoremap { {}<esc>i
+" inoremap ( ()<esc>i
+
+" press <return> after an open paren do c style paren
+inoremap {<cr>  {<cr>}<esc>O
+
+" " press an open paren twice type the literal paren
+" inoremap {{ {
+" inoremap [[ {
+" inoremap (( (
+
+" " quickly close paren with nothing in between
+" inoremap {} {}
+" inoremap [] []
+" inoremap () ()
+
+" ================================= pluggins ===================================
+" Autocomplpop: Autocomplpop settings
+let g:acp_enableAtStartup = 1
+let g:acp_mappingDriven = 1
+
+" " CSApprox: terminal vim color simulation, off
+" let g:CSApprox_loaded = 0
+
+" DelimitMate: delimitMate setting
+let loaded_delimitMate = 1
+
+" Taglist: taglist settings 
+" let Tlist_Auto_Open = 1
+let Tlist_Use_Right_Window=1
+let Tlist_Exit_OnlyWindow=1
+
+" NERDTree: nerdtree settings
+" autocmd VimEnter * NERDTree
+" autocmd VimEnter * wincmd w
+" Close all open buffers on entering a window if the only
+" buffer that's left is the NERDTree buffer
+autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
+function! s:CloseIfOnlyNerdTreeLeft()
+    if exists("t:NERDTreeBufName")
+        if bufwinnr(t:NERDTreeBufName) != -1
+            if winnr("$") == 1
+                q
+            endif
+        endif
+    endif
+endfunction
+let NERDTreeShowHidden=1
+
+" =================================== TODOs ====================================
+" TODO 
+" * fix issue with quit window with nerdtree and taglist
+" * ruby match do .. endif
+" * fold function/classes
+
+" " IDEA: fix later
+" autocmd WinEnter * call NoExcitingBuffersLeft()
+" fun! NoExcitingBuffersLeft()
+"    if tabpagenr("$") == 1 && winnr("$") == 2
+"       let window1 = bufname(winbufnr(1))
+"       let window2 = bufname(winbufnr(2))
+"       if (window1 == t:NERDTreeBufName || window1 == "__Tag_List__") &&
+"          (window2 == t:NERDTreeBufName || window2 == "__Tag_List__")
+"          quit
+"       endif
+"    endif
+" endfun
