@@ -1,6 +1,6 @@
 export MARKPATH=$HOME/.marks
 
-function jump { 
+function jmp { 
     cd -P "$MARKPATH/$1" 2>/dev/null || echo "No such mark: $1"
 }
 function mark { 
