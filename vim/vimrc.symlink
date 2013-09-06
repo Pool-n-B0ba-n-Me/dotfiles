@@ -24,7 +24,6 @@ call vundle#rc()
 
 " let Vundle manage Vundle
 Bundle 'gmarik/vundle'
-
 " My Bundles here:
 "
 " essentials
@@ -53,11 +52,11 @@ endif
 filetype plugin indent on   " vundle required!
 
 " ================================ general =====================================
-set history=1000            " save more history
-set nobackup                " no back up files
+set history=1000                    " save more history
+set nobackup                        " no back up files
 set nowritebackup
 set noswapfile
-set oft=syntaxcomplete#Complete " omnicomplete
+set oft=syntaxcomplete#Complete     " omnicomplete
 
 " double click to highlight a word
 nnoremap <silent> <2-LeftMouse> :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>
@@ -70,7 +69,6 @@ autocmd FileType xml        setlocal tabstop=2 softtabstop=2 shiftwidth=2
 
 " ================================ colors ======================================
 syntax enable
-
 " IMPORTANT: Uncomment one of the following lines to force
 " using 256 colors (or 88 colors) if your terminal supports it,
 " but does not automatically use 256 colors by default.
@@ -103,7 +101,7 @@ highlight Search guibg=LightGreen
 
 " ============================== basic UIs =====================================
 set number                  " show line number
-" set cul                   " highlight current line
+set cul                     " highlight current line
 set mouse=a                 " allow mouse in all four modes
 set laststatus=2            " last window always has a statusline
 set ruler                   " always show info along bottom
@@ -112,7 +110,6 @@ set incsearch               " search as you type
 set ignorecase              " search ignore case
 set showmatch               " match opposite paren 
 set statusline=%<%f\%h%m%r%=%-20.(line=%l\ \ col=%c%V\ \ totlin=%L%)\ \ \%h%m%r%=%-40(bytval=0x%B,%n%Y%)\%P
-set cursorline
 " hi CursorLine term=bold cterm=bold guibg=Grey40
 
 " ============================== 80 char rule ==================================
@@ -173,39 +170,39 @@ let g:acp_mappingDriven = 1         " 1 to triggered by key mappings
 " let g:CSApprox_loaded = 1         " 1 to not load ...
 
 " DelimitMate: delimitMate setting
-let loaded_delimitMate = 1
+let loaded_delimitMate = 0          " 1 to not load ...
 
 " TagBar: F9
 nnoremap <silent> <F9> :TagbarToggle<CR>
 let g:tagbar_autoclose = 1          " 1 to close buffer after jump
 
 " NERDTree: 
+let NERDTreeShowHidden=0            " 1 to show hidden files
 " Close all open buffers onEnter a window if the only buffer left is NERDTree
-" autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
-" function! s:CloseIfOnlyNerdTreeLeft()
-"     if exists("t:NERDTreeBufName")
-"         if bufwinnr(t:NERDTreeBufName) != -1
-"             if winnr("$") == 1
-"                 q
-"             endif
-"         endif
-"     endif
-" endfunction
-" let NERDTreeShowHidden=1
+autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
+function! s:CloseIfOnlyNerdTreeLeft()
+    if exists("t:NERDTreeBufName")
+        if bufwinnr(t:NERDTreeBufName) != -1
+            if winnr("$") == 1
+                q
+            endif
+        endif
+    endif
+endfunction
 
 " =================================== TODOs ====================================
 " * read AutoComplPop and delimitMate
 " * better completion
 "       AutoComplPop - study it first
-"       youCompleteMe?
-"       clang complete requires clang compiler
+"       youCompleteMe - need 7.3.584+ and install compiler
+"       clang-complete - requires clang compiler
 "
 " * plugin list:
 "       conque shell - vs screen
 "       simple pairs - complete parens and more
 "       fugitive - git integration
 "       matchit - match more than parens
-"       snipMate - ?
+"       snipMate - code snippet appears when <tab>
 "       supertab - ?
 "       powerline - enhance the bar in the bottom
 "       easyMotion - jump around in file
