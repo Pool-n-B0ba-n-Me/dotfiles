@@ -108,6 +108,7 @@ set ruler                   " always show info along bottom
 set hlsearch                " highlight search
 set incsearch               " search as you type
 set ignorecase              " search ignore case
+set smartcase               " not ignore case if include UPPER case letter
 set showmatch               " match opposite paren 
 set statusline=%<%f\%h%m%r%=%-20.(line=%l\ \ col=%c%V\ \ totlin=%L%)\ \ \%h%m%r%=%-40(bytval=0x%B,%n%Y%)\%P
 
