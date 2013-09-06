@@ -3,9 +3,10 @@
 "        URL: http://github.com/ruoyul/dotfiles                                "
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-" ================================= Vundle =====================================
-set nocompatible               " be iMproved
+" ============================== be iMproved ===================================
+set nocompatible
 
+" ================================= Vundle =====================================
 " clone vundle if not there, vundle #1
 let iCanHazVundle=1
 let vundle_readme=expand('~/.vim/bundle/vundle/README.md')
@@ -26,18 +27,21 @@ Bundle 'gmarik/vundle'
 
 " My Bundles here:
 "
-" original repos on github
+" essentials
 Bundle 'godlygeek/csapprox'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'tomtom/tcomment_vim'
+Bundle 'vim-scripts/AutoComplPop'
+Bundle 'tpope/vim-repeat'
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdtree'
+" new comers
+Bundle 'scrooloose/syntastic.git'
 Bundle 'majutsushi/tagbar'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-repeat'
+Bundle 'vim-scripts/a.vim'
+" stale ones
 Bundle 'Raimondi/delimitMate'
-" vim-scripts repos
-Bundle 'AutoComplPop'   " TODO find better one, look at you completion me
+Bundle 'tpope/vim-surround'
 
 " install all bundle if vundle was just cloned, see vundle #1
 if iCanHazVundle == 0
@@ -50,16 +54,13 @@ filetype plugin indent on   " vundle required!
 
 " ================================ general =====================================
 set history=1000            " save more history
-" double click to highlight a word
-nnoremap <silent> <2-LeftMouse> :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>
-
-" =============================== no backup ====================================
 set nobackup                " no back up files
 set nowritebackup
 set noswapfile
+set oft=syntaxcomplete#Complete " omnicomplete
 
-" ============================== completion ====================================
-set oft=syntaxcomplete#Complete
+" double click to highlight a word
+nnoremap <silent> <2-LeftMouse> :let @/='\V\<'.escape(expand('<cword>'), '\').'\>'<cr>:set hls<cr>
 
 " ========================== FileType specific =================================
 autocmd FileType python     setlocal tabstop=4 softtabstop=4 shiftwidth=4
@@ -100,14 +101,6 @@ endif
 " change highlight seach color
 highlight Search guibg=LightGreen
 
-" ============================== 80 char rule ==================================
-if version >= 703
-    set colorcolumn=81
-else
-    highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-    match OverLength /\%81v.\+/  
-endif
-
 " ============================== basic UIs =====================================
 set number                  " show line number
 " set cul                   " highlight current line
@@ -121,6 +114,14 @@ set showmatch               " match opposite paren
 set statusline=%<%f\%h%m%r%=%-20.(line=%l\ \ col=%c%V\ \ totlin=%L%)\ \ \%h%m%r%=%-40(bytval=0x%B,%n%Y%)\%P
 set cursorline
 " hi CursorLine term=bold cterm=bold guibg=Grey40
+
+" ============================== 80 char rule ==================================
+if version >= 703
+    set colorcolumn=81
+else
+    highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+    match OverLength /\%81v.\+/  
+endif
 
 " ============================== buffers =======================================
 set hidden                  " hide a buffer when it's closed
@@ -174,25 +175,41 @@ let g:acp_mappingDriven = 1         " 1 to triggered by key mappings
 " DelimitMate: delimitMate setting
 let loaded_delimitMate = 1
 
+" TagBar: F9
+nnoremap <silent> <F9> :TagbarToggle<CR>
+let g:tagbar_autoclose = 1          " 1 to close buffer after jump
+
 " NERDTree: 
 " Close all open buffers onEnter a window if the only buffer left is NERDTree
-autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
-function! s:CloseIfOnlyNerdTreeLeft()
-    if exists("t:NERDTreeBufName")
-        if bufwinnr(t:NERDTreeBufName) != -1
-            if winnr("$") == 1
-                q
-            endif
-        endif
-    endif
-endfunction
-let NERDTreeShowHidden=1
-
-" TagBar: 
-nnoremap <silent> <F9> :TagbarToggle<CR>
-let g:tagbar_autoclose = 1  " 1 to close buffer after jump
+" autocmd WinEnter * call s:CloseIfOnlyNerdTreeLeft()
+" function! s:CloseIfOnlyNerdTreeLeft()
+"     if exists("t:NERDTreeBufName")
+"         if bufwinnr(t:NERDTreeBufName) != -1
+"             if winnr("$") == 1
+"                 q
+"             endif
+"         endif
+"     endif
+" endfunction
+" let NERDTreeShowHidden=1
 
 " =================================== TODOs ====================================
-" TODO 
-" * ruby match do .. endif, html tag match, maybe use matchit?
+" * read AutoComplPop and delimitMate
+" * better completion
+"       AutoComplPop - study it first
+"       youCompleteMe?
+"       clang complete requires clang compiler
+"
+" * plugin list:
+"       conque shell - vs screen
+"       simple pairs - complete parens and more
+"       fugitive - git integration
+"       matchit - match more than parens
+"       snipMate - ?
+"       supertab - ?
+"       powerline - enhance the bar in the bottom
+"       easyMotion - jump around in file
+"       closetag.vim - html tags
+"       sensible.vim - sane default setting
+"
 " * fold function/classes
