@@ -31,6 +31,7 @@ Bundle 'godlygeek/csapprox'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'vim-scripts/AutoComplPop'
+Bundle 'Raimondi/delimitMate'
 Bundle 'tpope/vim-repeat'
 Bundle 'kien/ctrlp.vim'
 Bundle 'scrooloose/nerdtree'
@@ -39,7 +40,6 @@ Bundle 'scrooloose/syntastic.git'
 Bundle 'majutsushi/tagbar'
 Bundle 'vim-scripts/a.vim'
 " stale ones
-Bundle 'Raimondi/delimitMate'
 Bundle 'tpope/vim-surround'
 
 " install all bundle if vundle was just cloned, see vundle #1
@@ -157,9 +157,6 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
-
-" press <return> after an open paren do c style paren
-inoremap {<cr>  {<cr>}<esc>O
 
 " ================================= pluggins ===================================
 " Autocomplpop: Autocomplpop settings
