@@ -37,7 +37,8 @@ if [ $ostype = "Linux" ]; then
     export GIT_EDITOR="gvim -v"
     alias vim="gvim -v"
     # 15410 tools
-    PATH=$PATH:/afs/cs.cmu.edu/academic/class/15410-f13/bin # Add RVM to PATH for scripting
+    PATH=$PATH:/afs/cs.cmu.edu/academic/class/15410-f13/bin
+    aklog cs.cmu.edu
 
 elif [ $ostype = "Darwin" ]; then
     ZSH_THEME="af-magic"
