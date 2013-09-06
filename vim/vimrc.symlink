@@ -110,7 +110,6 @@ set incsearch               " search as you type
 set ignorecase              " search ignore case
 set showmatch               " match opposite paren 
 set statusline=%<%f\%h%m%r%=%-20.(line=%l\ \ col=%c%V\ \ totlin=%L%)\ \ \%h%m%r%=%-40(bytval=0x%B,%n%Y%)\%P
-" hi CursorLine term=bold cterm=bold guibg=Grey40
 
 " ============================== 80 char rule ==================================
 if version >= 703
@@ -193,7 +192,6 @@ endfunction
 "
 " * plugin list:
 "       conque shell - vs screen
-"       simple pairs - complete parens and more
 "       fugitive - git integration
 "       matchit - match more than parens
 "       snipMate - code snippet appears when <tab>
