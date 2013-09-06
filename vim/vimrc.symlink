@@ -185,9 +185,9 @@ function! s:CloseIfOnlyNerdTreeLeft()
 endfunction
 
 " =================================== TODOs ====================================
-" * read AutoComplPop and delimitMate
+" * read AutoComplPop
 " * better completion
-"       AutoComplPop - study it first
+"       AutoComplPop
 "       youCompleteMe - need 7.3.584+ and install compiler
 "       clang-complete - requires clang compiler
 "
