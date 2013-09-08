@@ -35,7 +35,7 @@ export GIT_EDITOR=vim
 # os specific settings
 ostype=`uname`
 if [ $ostype = "Linux" ]; then
-    plugins=(git gitfast jump screen vundle web-search)
+    plugins=(git jump screen vundle web-search)
     # 15410 tools
     PATH=$PATH:/afs/cs.cmu.edu/academic/class/15410-f13/bin
     aklog cs.cmu.edu
