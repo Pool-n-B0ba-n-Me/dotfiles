@@ -35,12 +35,12 @@ export GIT_EDITOR=vim
 # os specific settings
 ostype=`uname`
 if [ $ostype = "Linux" ]; then
-    plugins=(mvn ant screen)
+    plugins=(git gitfast jump screen vundle web-search)
     # 15410 tools
     PATH=$PATH:/afs/cs.cmu.edu/academic/class/15410-f13/bin
     aklog cs.cmu.edu
 elif [ $ostype = "Darwin" ]; then
-    plugins=(osx mvn ant screen heroku)
+    plugins=(brew git gitfast jump osx screen vundle web-search)
 elif [ $ostype = "CYGWIN_NT-6.1-WOW64" ]; then
 fi
 
