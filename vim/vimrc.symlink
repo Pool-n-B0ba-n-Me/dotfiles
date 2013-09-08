@@ -93,7 +93,7 @@ set background=dark
 colorscheme solarized
 
 " change highlight seach color
-highlight Search guibg=LightGreen
+" highlight Search guibg=LightGreen
 
 " ============================== basic UIs =====================================
 set number                  " show line number
