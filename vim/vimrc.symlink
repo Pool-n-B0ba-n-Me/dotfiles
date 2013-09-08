@@ -75,26 +75,22 @@ syntax enable
 set t_Co=256
 " set t_Co=88
 
-" os specific colorschemes
-let os = substitute(system('uname'), "\n", "", "")
-if os == "Darwin"
-    set background=dark
-    if has('gui_running')
-        colorscheme solarized
-    else
-        colorscheme wombat
-    endif
-elseif os == "Linux"
-    " set background=dark
-    if has('gui_running')
-        colorscheme solarized
-    else
-        colorscheme wombat
-    endif
-elseif os == "CYGWIN_NT-6.1-WOW64"
-    set background=dark
-    colorscheme zenburn
-endif
+" os specific colorschemes, turned-off, just use solarized for now
+" let os = substitute(system('uname'), "\n", "", "")
+" if os == "Darwin"
+"     if has('gui_running')
+"     else
+"     endif
+" elseif os == "Linux"
+"     if has('gui_running')
+"     else
+"     endif
+" elseif os == "CYGWIN_NT-6.1-WOW64"
+" endif
+
+" use solarized for all
+set background=dark
+colorscheme solarized
 
 " change highlight seach color
 highlight Search guibg=LightGreen
@@ -163,8 +159,8 @@ nnoremap <C-H> <C-W><C-H>
 let g:acp_enableAtStartup = 1       " 1 to enable at startup
 let g:acp_mappingDriven = 1         " 1 to triggered by key mappings
 
-" CSApprox: terminal vim color simulation, 
-" let g:CSApprox_loaded = 1         " 1 to not load ...
+" CSApprox: terminal vim color simulation, disable since using solarized
+let g:CSApprox_loaded = 1         " 1 to not load ...
 
 " TagBar: F9
 nnoremap <silent> <F9> :TagbarToggle<CR>
