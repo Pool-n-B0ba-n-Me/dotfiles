@@ -166,6 +166,10 @@ let g:CSApprox_loaded = 1         " 1 to not load ...
 nnoremap <silent> <F9> :TagbarToggle<CR>
 let g:tagbar_autoclose = 1          " 1 to close buffer after jump
 
+let g:syntastic_mode_map={ 'mode': 'active',
+                     \ 'active_filetypes': [],
+                     \ 'passive_filetypes': ['c'] }
+
 " NERDTree: 
 let NERDTreeShowHidden=0            " 1 to show hidden files
 " Close all open buffers onEnter a window if the only buffer left is NERDTree

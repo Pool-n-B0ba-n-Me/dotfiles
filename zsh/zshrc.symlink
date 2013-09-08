@@ -39,6 +39,7 @@ if [ $ostype = "Linux" ]; then
     # 15410 tools
     PATH=$PATH:/afs/cs.cmu.edu/academic/class/15410-f13/bin
     aklog cs.cmu.edu
+    alias sim=simics4
 elif [ $ostype = "Darwin" ]; then
     plugins=(brew git gitfast jump osx screen vundle web-search)
 elif [ $ostype = "CYGWIN_NT-6.1-WOW64" ]; then
